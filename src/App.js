@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Suspense, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import ErrorBoundary from "./Components/ErrorBoundary";
+import CoinPage from "./Pages/CoinPage";
+import HomePage from "./Pages/HomePage";
+import { makeStyles } from "@material-ui/core/styles";
+const useStyles = makeStyles(() => ({
+  App: {
+    backgroundColor: "white",
+    color: "white",
+    minHeight: "100vh",
+  },
+}));
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.App}>
+      <ErrorBoundary>
+        <Suspense fallback={<p>Loading...</p>}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/coins/:id" element={<CoinPage />} />
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 }
