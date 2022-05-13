@@ -1,10 +1,12 @@
-import { Suspense, useEffect } from "react";
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import ErrorBoundary from "./Components/ErrorBoundary";
-import CoinPage from "./Pages/CoinPage";
-import HomePage from "./Pages/HomePage";
 import { makeStyles } from "@material-ui/core/styles";
+
+const HomePage = lazy(() => import("./Pages/HomePage"));
+const CoinPage = lazy(() => import("./Pages/CoinPage"));
+
 const useStyles = makeStyles(() => ({
   App: {
     backgroundColor: "white",

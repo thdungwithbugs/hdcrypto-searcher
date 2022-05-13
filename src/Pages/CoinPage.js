@@ -230,7 +230,7 @@ const CoinPage = () => {
                 style={{ fontWeight: "lighter", display:'flex', flexDirection:'column', gap:'5px' }}
               >
                 {cryptoDetail?.links?.blockchain_site?.slice(0,5).map((item,index)=>{
-                    return <div key={index} style={{display:'flex', flexDirection:'column', fontSize:'1rem', wordWrap:'break-word'}}><a href={item}>{item}</a></div>
+                    return <div key={index} style={{display:'flex', flexDirection:'column', fontSize:'1rem', wordWrap:'break-word'}}><a href={item} target="_blank" rel="noreferrer noopener">{item}</a></div>
                 })}
               </Typography>
             </span>
